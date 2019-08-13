@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simon Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="css/app.css" inline>
+</head>
+<body>
+    <!-- main app -->
+    <div id="mainApp">
+
+        <!-- welcome page -->
+        <div id="welcomePage" class="is-active">
+            <div class="game-btn" id="game-start-btn">
+                Start Game
+            </div>
+        </div>
+
+        <!-- game page -->
+        <div id="gamePage">
+
+            <div class="game--info">
+                <div class="game--info__timer">
+                    <div class="game--info__timer__title">Time</div>
+                    <div class="game--info__timer__time">0</div>
+                </div>
+                <div class="game--info__level">
+                    <div class="game--info__level__title">LV</div>
+                    <div class="game--info__level__num"></div>
+                </div>
+                <div class="game--info__chance">
+                    <div class="game--info__chance__title">Chance</div>
+                    <div class="game--info__chance__num"></div>
+                </div>
+                <div class="game--info__display">
+                    <div class="game--info__display__title">&nbsp;</div>
+                </div>
+            </div>
+
+            
+
+            <div class="game--input-wrapper">
+                <div class="game-row">
+                    <div class="game-label blue" data-id="blue"></div>
+                </div>
+                <div class="game-row">
+                    <div class="game-label green" data-id="green"></div>
+                    <div class="game--info__remaining-tap"></div>
+                    <div class="game-label red" data-id="red"></div>
+                </div>
+                <div class="game-row">
+                    <div class="game-label yellow" data-id="yellow"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- thank you page -->
+        <div id="thankYouPage">
+            <h1>Thanks for playing</h1>
+            <p>
+                Your Result: <br>
+                Level: <span id="user-game-result-level"></span><br>
+                Time: <span id="user-game-result-time"></span>
+            </p>
+            <div class="game-btn" id="game-retry-btn">
+                Play again
+            </div>
+        </div>
+
+
+    </div>
+    <script src="js/app.js" inline></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+@import "base/_normalize";
+@import "helpers/_mixins";
+
+
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+    background: #000 !important;
+    margin: 0;
+    font-size: 16px;
+}
+
+/*
+    Main Game
+    */
+
+// color
+$color-red: #F21B3F;
+$color-blue: #0d7abb;
+$color-green: #189a58;
+$color-yellow: #f6ad35;
+
+// animation
+$transition-time: .35s;
+
+@keyframes droping {
+    100% { transform: translate(0, 0); }
+}  
+
+@keyframes grow {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(2.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.grow-animation {
+  animation: grow $transition-time ease-in-out forwards;
+}
+
+
+@keyframes blink {
+    0% {
+      opacity: .2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .2;
+    }
+}
+
+
+/*
+    Pages
+    */
+  
+#welcomePage {
+    text-align: center;
+}
+#thankYouPage {
+  text-align: center;
+  margin-top: 100px;
+
+    h1 {
+        @include font--monospace(30px, #fff, 600,  1.3, 0);
+        text-align: center;
+    }
+    p {
+        @include font--monospace(16px, #fff, 400,  1.3, 0);
+        text-align: center;
+        padding: 0 1rem;
+    }
+}
+#welcomePage,
+#gamePage,
+#thankYouPage {
+    display: none;
+    &.is-active {
+        display: block;
+    }
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
+
+.game {
+   
+    &--input-wrapper {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+    &-row {
+        &:nth-child(1),
+        &:nth-child(3) {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+        &:nth-child(2) {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &--info {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        max-width: 360px;
+        margin: 20px auto 30px;
+        > * {
+            flex: 0 1 33.3%;
+        }
+
+        
+        &__timer {
+            text-align: center;
+            @include font--monospace(18px, #fff, 400, 1.3, 0);
+            &__time {
+    
+            }
+
+        }
+        &__level{
+            text-align: center;
+            @include font--monospace(18px, #fff, 400, 1.3, 0);
+            &__num {
+                
+            }
+
+        }
+        &__chance {
+            text-align: center;
+            position: relative;
+            @include font--monospace(18px, #fff, 400, 1.3, 0);
+            &__num {
+                overflow: hidden;
+                height: 18px;
+                &__list {
+                    transform: translate(0, -50%); 
+                    animation: droping $transition-time forwards ease-in-out;
+                }
+            }
+
+        }
+        &__display {
+            text-align: center;
+            margin-top: 10px;
+            @include font--monospace(14px, #666, 400, 2, 0);
+            border: dashed 1px #666;
+            &__title {
+                span {
+                    animation: fade-in .25s forwards ease-in;
+                }
+            }
+        }
+        &__remaining-tap {
+            text-align: center;
+            @include font--monospace(28px, #fff, 400, 1.3, 0);
+        }
+    }
+    &-info {
+        width: 60px;
+        height: 60px;
+    }
+    
+    &-input {
+        display: none;
+    }
+    &-label {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 20px;
+        cursor: pointer;
+        touch-action: manipulation;
+        &.blue {
+            border: 4px solid $color-blue;
+            &.on {
+                background: $color-blue;
+                box-shadow: $color-blue 0 0 10px;
+            }
+        }
+        &.green {
+            border: 4px solid $color-green;
+            &.on {
+                background: $color-green;
+                box-shadow: $color-green 0 0 10px;
+            }
+        }
+        &.red {
+            border: 4px solid $color-red;
+            &.on {
+                background: $color-red;
+                box-shadow: $color-red 0 0 10px;
+            }
+        }
+        &.yellow {
+            border: 4px solid $color-yellow;
+            &.on {
+                background: $color-yellow;
+                box-shadow: $color-yellow 0 0 10px;
+            }
+        }
+
+    }
+}
+
+.game-btn {
+    @include font--monospace(16px, #fff, 400,  1.3, 0);
+    border: solid 1px #fff;
+    background: transparent;
+    padding: 15px 25px;
+    margin: 100px 0;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    display: inline-block;
+}
+
+.effect {
+    transform: scale(1.1);
+    transition: transform .25s;
+}
+
+
+.loading {
+
+    span {
+        animation-name: blink;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+
+        &:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+    }
+}
